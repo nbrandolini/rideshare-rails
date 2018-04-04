@@ -1,23 +1,11 @@
 <h1>Drivers</h1>
-<section class="list">
+  <ul>
 
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>VIN</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @drivers.each do |d|  %>
-      <tr>
-        <td><%= d.id %></td>
-        <td><%= link_to(d.name, driver_path(d.id))%></td>
-        <td><%= link_to(d.vin, driver_path(d.id))%></td>
-
-      </tr>
-      <% end  %>
-    </tbody>
-  </table>
-</section>
+    <% @drivers.each do |d|  %>
+<li>
+  <%= d.id %></td>
+  <%= link_to(d.name, driver_path(d.id))%>
+  <%= link_to(d.vin, driver_path(d.id))%>
+</li>
+<% end %>
+  </ul>
