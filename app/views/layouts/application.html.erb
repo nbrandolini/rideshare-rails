@@ -9,6 +9,19 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            TODO: HOME link to trips_path
+            <!-- <%= link_to "Home", books_path %> -->
+          </li>
+          <li>
+            <%=  link_to "Add a Passenger", new_passenger_path %>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
