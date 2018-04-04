@@ -1,12 +1,11 @@
 class DriversController < ApplicationController
 
   def index
-    @drivers = Driver.all
+    @drivers = Driver.order(:id)
   end
 
   def show
-    id = params[:id]
-    @driver = Driver.find(id)
+    @driver = Driver.find_by(id: params[:id])
   end
 
   def new
@@ -14,8 +13,8 @@ class DriversController < ApplicationController
   end
 
   def create
-    driver = Driver.new(driver_params)
-    if driver.save
+    @driver = Driver.new(driver_params)
+    if @driver.save
       redirect_to driver_path
     else
       render :new
@@ -40,11 +39,7 @@ class DriversController < ApplicationController
   end
 
   def destroy
-    id = params[:id]
-    @driver = Driver.find(id)
-    if @driver
-      @driver.destroy
-    end
+    @driver = Driver.find_by(id: params[:id]).destroy
     redirect_to drivers_path
     end
 

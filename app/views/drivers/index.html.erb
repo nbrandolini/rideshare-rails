@@ -1,13 +1,23 @@
-<h2>Drivers List</h2>
+<h1>Drivers</h1>
+<section class="list">
 
-<ul>
-<% @drivers.each do |driver| %>
-  <li>
-      <span class="title">
-        <%= link_to driver.name, driver_path(driver[:id]),
-        class: 'title-link' %>
-      </span>
-      by <%= driver.name %>
-  </li>
-<% end %>
-</ul>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>VIN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @drivers.each do |d|  %>
+      <tr>
+        <td><%= d.id %></td>
+        <td><%= link_to(d.name, driver_path(d.id))%></td>
+        <td><%= link_to(d.vin, driver_path(d.id))%></td>
+
+      </tr>
+      <% end  %>
+    </tbody>
+  </table>
+</section>
