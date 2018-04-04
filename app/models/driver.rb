@@ -5,31 +5,16 @@ class Driver < ApplicationRecord
 
 
   def total_earnings
-    total = 0
-    trips.each do |t|
-      total += t.cost
-    end
-    total = total - (total * 0.15)
-    return total
+    trips.inject(0) {| sum , trip| sum + trip.cost - 1.65} * 0.8
   end
 
   def average_rating
-    total = 0
-    counter = 0
+    return if trips.empty?
+    total_ratings = 0
     trips.each do |t|
-      if t.rating
-        total += t.rating
-        counter += 1
-      end
+      total_ratings += t.rating
     end
-
-    if counter == 0
-      return "Currently this driver has no ratings"
-    end
-
-    total /= counter
-    return total.round(1)
+    return total_ratings.to_f/trips.length.round(1)
   end
-
 
 end
