@@ -1,2 +1,13 @@
-<h2>Drivers index</h2>
-<%= Driver.first %>
+<h2>Drivers List</h2>
+
+<ul>
+<% @drivers.each do |driver| %>
+  <li>
+      <span class="title">
+        <%= link_to driver.name, driver_path(driver[:id]),
+        class: 'title-link' %>
+      </span>
+      by <%= driver.name %>
+  </li>
+<% end %>
+</ul>
