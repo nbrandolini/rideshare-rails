@@ -5,7 +5,9 @@ class Driver < ApplicationRecord
 
 
   def total_earnings
-    trips.inject(0) {| sum , trip| sum + trip.cost - 1.65} * 0.8
+    subtotal = trips.inject(0) {| sum , trip| sum + trip.cost - 1.65} * 0.8
+    total = subtotal / 100
+    return sprintf('%.02f', total)
   end
 
   def average_rating
@@ -14,7 +16,7 @@ class Driver < ApplicationRecord
     trips.each do |t|
       total_ratings += t.rating
     end
-    return total_ratings.to_f/trips.length.round(1)
+    return sprintf('%.01f', total_ratings/trips.length)
   end
 
 end
