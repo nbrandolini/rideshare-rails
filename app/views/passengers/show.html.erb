@@ -36,7 +36,7 @@
           <%= t.date %>
         </td>
         <td>
-          <%= t.cost / 100 %>
+          $<%= t.cost / 100 %>
         </td>
         <td>
           <%= t.driver.name %>
@@ -50,7 +50,7 @@
   </table>
   <% end %>
   <p>
-    <strong>Total cost: </strong><%= @passenger.total_cost %>
+    <strong>Total cost: </strong>$<%= @passenger.total_cost %>
   </p>
 </section>
 

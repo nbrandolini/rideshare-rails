@@ -30,6 +30,15 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find_by(id: params[:id])
+    if !@trip.nil?
+      if @trip.update(trip_params)
+        redirect_to trip_path(@trip.id)
+      else
+        render :edit
+      end
+    else
+      redirect_to trips_path
+    end
   end
 
   def edit_rating # do we need to edit and update?

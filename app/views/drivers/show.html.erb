@@ -8,7 +8,7 @@
   <h4>VIN:</h4>
   <p><%= @driver.vin %></p>
   <h4>Driver Total Earnings:</h4>
-  <%=@driver.total_earnings %>
+  $<%=@driver.total_earnings %>
 
   <h4>Driver Rating Average:</h4>
   <%= @driver.average_rating %>
@@ -39,7 +39,7 @@
           <%= t.date %>
         </td>
         <td>
-          <%= t.cost / 100 %>
+          $<%= t.cost / 100 %>
         </td>
         <td>
           <%= t.passenger.name %>

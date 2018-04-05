@@ -7,10 +7,10 @@
     <strong>Trip ID: </strong><%= @trip.id %>
   </p>
   <p>
-    <strong>Driver Name: </strong> <%= link_to @trip.driver.name, driver_path(@trip.driver.id) %>
+    <strong>Driver: </strong> <%= link_to @trip.driver.name, driver_path(@trip.driver.id) %>
   </p>
   <p>
-    <strong>Passenger Name: </strong> <%= link_to@trip.passenger.name, passenger_path(@trip.passenger.id) %>
+    <strong>Passenger: </strong> <%= link_to@trip.passenger.name, passenger_path(@trip.passenger.id) %>
   </p>
   <p>
     <strong>Date: </strong> <%= @trip.date%>
@@ -19,7 +19,7 @@
     <strong>Rating: </strong> <%= @trip.rating%>
   </p>
   <p>
-    <strong>Cost: </strong> <%= @trip.cost/100%>
+    <strong>Cost: </strong>$<%= @trip.cost/100%>
   </p>
 
 </section>
