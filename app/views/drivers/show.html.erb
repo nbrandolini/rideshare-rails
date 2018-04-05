@@ -54,7 +54,11 @@
   <% end %>
 </section>
 
-<section>
-  <%= link_to("Edit Driver", edit_driver_path(@driver.id)) %>
-  <%= link_to("Delete Driver", driver_path(@driver.id), method: :delete, data: {confirm: "Hmmm, are you sure?"}) %>
-</section>
+<ul>
+  <li>
+    <%= link_to("Edit Driver", edit_driver_path(@driver.id)) %>
+  </li>
+  <li>
+    <%= link_to("Delete Driver", driver_path(@driver.id), method: :delete, data: {confirm: "Are you sure?"}) %>
+  </li>
+</ul>
