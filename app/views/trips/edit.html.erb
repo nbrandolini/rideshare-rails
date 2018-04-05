@@ -1,0 +1,18 @@
+<h1>Edit Trip</h1>
+
+<h2>Edit trip <%= @trip.id %></h2>
+<%= form_for @trip do |f| %>
+
+<%= f.label :passenger%>
+<%= f.text_field :passenger_id %>
+
+
+<%= f.label :driver%>
+<%= f.text_field :driver_id %>
+
+<%= f.label :rating%>
+<%= f.text_field :rating %>
+
+
+<%= f.submit %>
+<% end %>
