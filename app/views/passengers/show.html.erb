@@ -1,8 +1,55 @@
-<h2>Passenger Name: <%= @passenger.name %></h2>
+<h2>Passenger Info</h2>
 
-<p>
-  Phone number: <%= @passenger.phone_num %>
-</p>
+<section>
+  <p>
+    <strong>Name: </strong><%= @passenger.name %>
+  </p>
+  <p>
+    <strong>Phone number: </strong> <%= @passenger.phone_num %>
+  </p>
+</section>
+
+<section>
+  <p>
+    <strong>Trips: </strong>
+  </p>
+  <% if @passenger.trips.size == 0 %>
+  <p><em>This driver has no trips.</em></p>
+  <% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Trip ID</th>
+        <th>Date</th>
+        <th>Cost</th>
+        <th>Driver Name</th>
+        <th>Trip Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @passenger.trips.each do |t|  %>
+      <tr>
+        <td>
+          <%= link_to(t.id, trip_path(t.id)) %>
+        </td>
+        <td>
+          <%= t.date %>
+        </td>
+        <td>
+          <%= t.cost / 100 %>
+        </td>
+        <td>
+          <%= t.driver.name %>
+        </td>
+        <td>
+          <%= t.rating %>
+        </td>
+      </tr>
+      <% end  %>
+    </tbody>
+  </table>
+  <% end %>
+</section>
 
 
 <ul>
