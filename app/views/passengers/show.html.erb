@@ -14,7 +14,7 @@
     <strong>Trips: </strong>
   </p>
   <% if @passenger.trips.size == 0 %>
-  <p><em>This driver has no trips.</em></p>
+  <p><em>This passenger has no trips.</em></p>
   <% else %>
   <table>
     <thead>
@@ -30,7 +30,7 @@
       <% @passenger.trips.each do |t|  %>
       <tr>
         <td>
-          <%= link_to(t.id, trip_path(t.id)) %>
+          <%= link_to t.id, trip_path(t.id) %>
         </td>
         <td>
           <%= t.date %>
