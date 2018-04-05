@@ -1,7 +1,8 @@
 class TripsController < ApplicationController
 
-  def index
-  end
+  # def index
+  # end
+  #exclude in resources?
 
   def show
     @trip = Trip.find_by(id: params[:id])
@@ -9,17 +10,21 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    @trip.passenger = Passenger.find(params[:passenger_id])
+    @action = passenger_trips_path(params[:passenger_id])
   end
 
   def create
     @trip = Trip.new
-    passenger = Passenger.find_by(id: params[:passenger])
-    trip.passenger = passenger
-    trip.driver = Driver.all.sample
-    trip.date = Date.today.to_s
-    trip.cost = 1000
-    if trip.save
-      redirect_to passenger_path(params [:passenger])
+    @trip.passenger = Passenger.find(params[:passenger_id])
+
+    @trip.driver = Driver.all.sample
+    @trip.date = Date.today.to_s
+    @trip.cost = 1000
+    if @trip.save
+      redirect_to trip_path(@trip.id)
+    else
+      puts "error"
     end
   end
 
