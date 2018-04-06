@@ -11,8 +11,7 @@
 <%= f.text_field :driver_id %>
 
 <%= f.label :rating%>
-<%= f.text_field :rating %>
-
+<%= f.select :rating, options_for_select(1..5) %>
 
 <%= f.submit %>
 <% end %>
