@@ -1,9 +1,5 @@
 class TripsController < ApplicationController
 
-  # def index
-  # end
-  #exclude in resources?
-
   def show
     @trip = Trip.find_by(id: params[:id])
   end
@@ -17,7 +13,6 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new
     @trip.passenger = Passenger.find(params[:passenger_id])
-
     @trip.driver = Driver.all.sample
     @trip.date = Date.today.to_s
     @trip.cost = 1000
@@ -46,11 +41,7 @@ class TripsController < ApplicationController
     end
   end
 
-  def edit_rating # do we need to edit and update?
-    @trip = Trip.find_by(id: params[:id])
-  end
-
-  def update_rating # needs method
+  def update_rating
     @trip = Trip.find_by(id: params[:id])
     if !@trip.nil?
       if @trip.update(trip_params)
