@@ -19,4 +19,8 @@ class Driver < ApplicationRecord
     return sprintf('%.01f', total_ratings/trips.length)
   end
 
+  def select_driver
+
+  end
+
 end

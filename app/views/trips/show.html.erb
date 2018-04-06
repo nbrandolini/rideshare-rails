@@ -1,4 +1,4 @@
-<h1>Trip Number <%= @trip.id %></h1>
+<h1>Trip #<%= @trip.id %></h1>
 <% if @trip.errors.any?%>
 <ul>
   <% @trip.errors.each do |field, message|%>
@@ -43,7 +43,8 @@
     <%end%>
 
     <p>
-      <strong>Cost: </strong>$<%= @trip.cost/100%>
+      <strong>Cost: </strong>$<%= sprintf('%.02f', @trip.cost/100) %>
+
     </p>
 
   </section>
