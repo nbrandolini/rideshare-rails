@@ -8,7 +8,7 @@
     </li>
     <%end%>
   </ul>
-  <%end%>
+<%end%>
 
   <section>
     <p>
@@ -26,9 +26,11 @@
 
     <% if @trip.rating == nil%>
     <p>
-      <%= form_for @trip do |f|%>
+
+      <%= form_for @trip, :url => submit_rating_path do |f|%>
       <strong><%= f.label :rating %>:</strong>
-      <%= f.text_field :rating%>
+
+      <%= f.select :rating, options_for_select(1..5) %>
 
       <%= f.submit "Submit Rating" %>
     </p>

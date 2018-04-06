@@ -51,6 +51,16 @@ class TripsController < ApplicationController
   end
 
   def update_rating # needs method
+    @trip = Trip.find_by(id: params[:id])
+    if !@trip.nil?
+      if @trip.update(trip_params)
+        redirect_to trip_path(@trip.id)
+      else
+        render :show
+      end
+    else
+      redirect_to trips_path
+    end
   end
 
   def destroy
