@@ -19,10 +19,4 @@ class Driver < ApplicationRecord
     return sprintf('%.01f', total_ratings/trips.length)
   end
 
-  # def select_driver
-  #   drivers = Driver.all
-  #   drivers_available = drivers.reject { |driver| driver.available == false }
-  #   return drivers_available.first
-  # end
-
 end

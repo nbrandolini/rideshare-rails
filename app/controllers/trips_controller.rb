@@ -22,7 +22,7 @@ class TripsController < ApplicationController
 
       redirect_to trip_path(@trip.id)
     else
-      puts "error"
+      render :show
     end
   end
 
