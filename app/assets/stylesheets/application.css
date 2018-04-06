@@ -44,9 +44,7 @@ a {
   text-decoration: none;
 }
 
-nav a:visited {
-  color: white;
-}
+.home a:visited { color: white; }
 
 
 tr:nth-child(even) {
