@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>RideshareRails</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>RideshareRails</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <header>
-      <nav>
-        <ul class="nav-bar">
-          <li class="home">
-            <%=  link_to "RideShare Rails!", trips_path %>
-          </li>
-          <li>
-            <%=  link_to "Passengers", passengers_path %>
-          </li>
-          <li>
-            <%=  link_to "Drivers", drivers_path %>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <%= yield %>
-    </main>
-  </body>
+<body>
+  <header>
+    <nav>
+      <ul class="nav-bar">
+        <li class="home">
+          <%=  link_to "RideShare Rails!", trips_path %>
+        </li>
+        <div class="dropdown">
+          <li class="dropbtn">
+            <div class="dropbtn">Passengers</div>
+            <div class="dropdown-content">
+              <%=  link_to "View Passengers", passengers_path %>
+              <%=  link_to "Add Passenger", new_passenger_path %>
+            </div>
+          </div>
+        </li>
+
+        <div class="dropdown">
+          <li class="dropbtn">
+            <div class="dropbtn">Drivers</div>
+            <div class="dropdown-content">
+              <%=  link_to "View Drivers", drivers_path %>
+              <%=  link_to "Add Driver", new_driver_path %>
+
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <%= yield %>
+  </main>
+</body>
 </html>
