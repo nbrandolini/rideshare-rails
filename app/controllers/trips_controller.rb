@@ -15,12 +15,10 @@ class TripsController < ApplicationController
     @trip.passenger = Passenger.find(params[:passenger_id])
     @trip.driver = select_driver
 
-
-
-
     @trip.date = Date.today.to_s
     @trip.cost = 1000
     if @trip.save
+      @trip.driver.update(available: false)
 
       redirect_to trip_path(@trip.id)
     else
@@ -74,12 +72,9 @@ class TripsController < ApplicationController
 
   def select_driver
     drivers = Driver.all
-    drivers_available = drivers.reject { |driver| driver.available == false }
-    assigned_driver = drivers_available.first
+    drivers_available = drivers.select { |driver| driver.available == true }
 
-    assigned_driver.available = false
-    assigned_driver.save
-    return assigned_driver
+    return drivers_available.sample
   end
 
 end
