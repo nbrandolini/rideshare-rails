@@ -13,10 +13,15 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new
     @trip.passenger = Passenger.find(params[:passenger_id])
-    @trip.driver = Driver.all.sample
+    @trip.driver = select_driver
+
+
+
+
     @trip.date = Date.today.to_s
     @trip.cost = 1000
     if @trip.save
+
       redirect_to trip_path(@trip.id)
     else
       puts "error"
@@ -45,6 +50,7 @@ class TripsController < ApplicationController
     @trip = Trip.find_by(id: params[:id])
     if !@trip.nil?
       if @trip.update(trip_params)
+        @trip.driver.update(available: true)
         redirect_to trip_path(@trip.id)
       else
         render :show
@@ -63,7 +69,17 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    return params.require(:trip).permit(:passenger_id, :driver_id, :rating)
+    return params.require(:trip).permit(:passenger_id, :driver_id, :rating, :available)
+  end
+
+  def select_driver
+    drivers = Driver.all
+    drivers_available = drivers.reject { |driver| driver.available == false }
+    assigned_driver = drivers_available.first
+
+    assigned_driver.available = false
+    assigned_driver.save
+    return assigned_driver
   end
 
 end
