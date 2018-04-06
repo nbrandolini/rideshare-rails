@@ -96,3 +96,8 @@ table, th, td {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.list-item {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}

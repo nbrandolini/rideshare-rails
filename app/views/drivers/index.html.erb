@@ -2,7 +2,7 @@
 
 <ul>
   <% @drivers.each do |d|  %>
-  <li>
+  <li class="list-item">
     <%= link_to(d.name, driver_path(d.id))%>
   </li>
   <% end %>
