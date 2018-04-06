@@ -1,21 +1,24 @@
 <h2>Driver Info</h2>
 
 <section>
-  <h3><%= @driver.name %></h3>
+  <p>
+    <strong>Name: </strong><%= @driver.name %>
+  </p>
+  <p>
+    <strong>VIN: </strong><%= @driver.vin %>
+  </p>
+  <p>
+    <strong>Driver Total Earnings: </strong>  $<%=@driver.total_earnings %>
+  </p>
+  <p>
+    <strong>Driver Rating Average: </strong><%= @driver.average_rating %>
+  </p>
 </section>
 
 <section>
-  <h4>VIN:</h4>
-  <p><%= @driver.vin %></p>
-  <h4>Driver Total Earnings:</h4>
-  $<%=@driver.total_earnings %>
-
-  <h4>Driver Rating Average:</h4>
-  <%= @driver.average_rating %>
-</section>
-
-<section>
-  <h4>Trip Information:</h4>
+  <p>
+    <strong>Trip Information:</strong>
+  </p>
   <% if @driver.trips.size == 0 %>
   <p><em>This driver has no trips.</em></p>
   <% else %>
